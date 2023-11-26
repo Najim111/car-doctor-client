@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../contextCreate/AuthProvider";
 
 const SingUp = () => {
-    const { singIn } = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext)
     const handelSingUp = e => {
         e.preventDefault()
         const from = e.target;
@@ -12,7 +12,7 @@ const SingUp = () => {
         const email = from.email.value;
         const password = from.password.value;
         console.log(name, email, password);
-        singIn(email, password)
+        createUser(email, password)
             .then(res => {
                 const user = res.user;
                 console.log(user)

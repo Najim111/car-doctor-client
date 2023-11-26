@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../component/contextCreate/AuthProvider";
+import swal from "sweetalert";
 
 
 
@@ -24,36 +25,27 @@ const Booking = () => {
             price: price,
             img,
         }
-        console.log(booking);
 
-
-        fetch('http://localhost:5000/booking', {
-            method: 'POST',
-            body: JSON.stringify({
-                title: 'foo',
-                body: 'bar',
-                userId: 1,
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
+        fetch('http://localhost:5000/booking',{
+            method:'POST',
+            headers:{
+                'content-type':'application/json'
             },
+            body:JSON.stringify(booking)
         })
-            .then((response) => response.json())
-            .then((json) => console.log(json));
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            if(data.insertedId){
+                swal({
+                    title: "Good job!",
+                    text: "Book service success",
+                    icon: "success",
+                  });
+            }
+        })  
 
 
-
-        // fetch('http://localhost:5000/booking',{
-        //     method:'POST',
-        //     headers:{
-        //         'content-type':'application/json'
-        //     },
-        //     body:JSON.stringify(booking)
-        // })
-        // .then(res=>res.json())
-        // .then(data=>{
-        //     console.log(data)
-        // })  
     }
     return (
         <div>

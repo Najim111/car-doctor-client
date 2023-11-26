@@ -4,6 +4,8 @@ import Home from "../pages/Home/Home/Home";
 import Login from "../component/login/Login";
 import SingUp from "../component/singup/SingUp";
 import Booking from "../pages/booking/Booking";
+import Bookings from "../pages/bookings/Bookings";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +28,11 @@ const router = createBrowserRouter([
             path:"/booking/:id",
             element:<Booking></Booking>,
             loader:({params})=> fetch(`http://localhost:5000/services/${params.id}`)
+        },
+        {
+            path:"/bookings",
+            element:<PrivateRoute><Bookings></Bookings></PrivateRoute>
+            
         },
       ]
     },
