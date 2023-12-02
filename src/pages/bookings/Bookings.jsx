@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../component/contextCreate/AuthProvider";
 import BookingsRow from "./BookingsRow";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 // import axios from "axios";
 // import swal from "sweetalert";
 
@@ -8,17 +9,23 @@ import BookingsRow from "./BookingsRow";
 const Bookings = () => {
     const { user } = useContext(AuthContext)
     const [bookings, setBookings] = useState([])
+    const secureAxios = useAxiosSecure()
 
-    const url = `http://localhost:5000/bookings?email=${user?.email}`;
+    // const url = `http://localhost:5000/bookings?email=${user?.email}`;
+    const url =`/bookings?email=${user?.email}`
     useEffect(() => {
         // axios.get(url,{withCredentials:true})
         //     .then(res => {
         //         setBookings(res.data);
         //     })
-        fetch(url,{credentials:'include'})
-            .then(res => res.json())
-            .then(data => setBookings(data))
-    }, [url]);
+        // fetch(url,{credentials:'include'})
+        //     .then(res => res.json())
+        //     .then(data => setBookings(data))
+        secureAxios.get(url)
+        .then(res=>setBookings(res.data))
+
+
+    }, [url, secureAxios]);
 
     const handelDelete = id => {
         const tost = confirm('are you sure this item is delete')
