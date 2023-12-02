@@ -32,13 +32,13 @@ const AuthProvider = ({ children }) => {
             console.log('current user', currentUser);
             setLoading(false);
             if (currentUser) {
-                axios.post('http://localhost:5000/jwt', logUser, { withCredentials: true })
+                axios.post('https://car-doctor-server-alpha-ivory.vercel.app/jwt', logUser, { withCredentials: true })
                     .then(res => {
                         console.log('token response', res.data);
                     })
             }
             else {
-                axios.post('http://localhost:5000/logout', logUser, { withCredentials: true })
+                axios.post('https://car-doctor-server-alpha-ivory.vercel.app/logout', logUser, { withCredentials: true })
                     .then(res=>{
                         console.log(res.data);
                     })

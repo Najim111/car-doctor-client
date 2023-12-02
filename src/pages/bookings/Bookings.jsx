@@ -11,7 +11,7 @@ const Bookings = () => {
     const [bookings, setBookings] = useState([])
     const secureAxios = useAxiosSecure()
 
-    // const url = `http://localhost:5000/bookings?email=${user?.email}`;
+    // const url = `https://car-doctor-server-alpha-ivory.vercel.app/bookings?email=${user?.email}`;
     const url =`/bookings?email=${user?.email}`
     useEffect(() => {
         // axios.get(url,{withCredentials:true})
@@ -30,7 +30,7 @@ const Bookings = () => {
     const handelDelete = id => {
         const tost = confirm('are you sure this item is delete')
         if (tost) {
-            fetch(`http://localhost:5000/bookings/${id}`, {
+            fetch(`https://car-doctor-server-alpha-ivory.vercel.app/bookings/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -45,7 +45,7 @@ const Bookings = () => {
         }
     }
     const handelApproval = id => {
-        fetch(`http://localhost:5000/bookings/${id}`, {
+        fetch(`https://car-doctor-server-alpha-ivory.vercel.app/bookings/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
