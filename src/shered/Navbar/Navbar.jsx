@@ -15,7 +15,7 @@ const Navbar = () => {
     }
     const NavePage =
         <>
-            <li><Link>Home</Link></li>
+            <li><Link to={'/'}>Home</Link></li>
             <li><Link>About</Link></li>
             {user?.email ?
                 <>

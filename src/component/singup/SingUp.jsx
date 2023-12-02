@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import img from '../../assets/images/login/login.svg'
-import { useContext } from "react";
-import { AuthContext } from "../contextCreate/AuthProvider";
+import useAuth from "../../hooks/useAuth";
+// import { useContext } from "react";
+// import { AuthContext } from "../contextCreate/AuthProvider";
 
 const SingUp = () => {
-    const { createUser } = useContext(AuthContext)
+    const {createUser}=useAuth()
+    // const { createUser } = useContext(AuthContext)
     const handelSingUp = e => {
         e.preventDefault()
         const from = e.target;
